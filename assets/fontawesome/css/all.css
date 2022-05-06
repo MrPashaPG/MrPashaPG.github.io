@@ -1,0 +1,104 @@
+.fa {
+  font-family: var(--fa-style-family, "Font Awesome 6 Pro");
+  font-weight: var(--fa-style, 900);
+}
+
+.fa,
+.fal,
+.fa-light,
+.fab,
+.fa-brands {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: var(--fa-display, inline-block);
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-rendering: auto;
+}
+
+@font-face {
+  font-family: "Font Awesome 6 Pro";
+  font-style: normal;
+  font-weight: 300;
+  font-display: block;
+  src: url("../webfonts/fa-light-300.woff2") format("woff2"),
+    url("../webfonts/fa-light-300.ttf") format("truetype");
+}
+
+.fal,
+.fa-light {
+  font-family: "Font Awesome 6 Pro";
+  font-weight: 300;
+}
+:root,
+:host {
+  --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Pro";
+}
+
+@font-face {
+  font-family: "Font Awesome 6 Brands";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("../webfonts/fa-brands-400.woff2") format("woff2"),
+    url("../webfonts/fa-brands-400.ttf") format("truetype");
+}
+
+.fab,
+.fa-brands {
+  font-family: "Font Awesome 6 Brands";
+  font-weight: 400;
+}
+
+.fa-telegram:before {
+  content: "\f2c6";
+}
+
+.fa-instagram:before {
+  content: "\f16d";
+}
+
+.fa-twitter:before {
+  content: "\f099";
+}
+
+.fa-linkedin-in:before {
+  content: "\f0e1";
+}
+
+.fa-github:before {
+  content: "\f09b";
+}
+
+.fa-heart-pulse::before {
+  content: "\f21e";
+}
+
+.fad.fa-heart-pulse::after,
+.fa-duotone.fa-heart-pulse::after {
+  content: "\f21e\f21e";
+}
+
+@font-face {
+  font-family: "Font Awesome 5 Brands";
+  font-display: block;
+  font-weight: 400;
+  src: url("../webfonts/fa-brands-400.woff2") format("woff2"),
+    url("../webfonts/fa-brands-400.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Font Awesome 5 Pro";
+  font-display: block;
+  font-weight: 300;
+  src: url("../webfonts/fa-light-300.woff2") format("woff2"),
+    url("../webfonts/fa-light-300.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "FontAwesome";
+  font-display: block;
+  src: url("../webfonts/fa-brands-400.woff2") format("woff2"),
+    url("../webfonts/fa-brands-400.ttf") format("truetype");
+}

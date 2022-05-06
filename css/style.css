@@ -1,0 +1,1635 @@
+html {
+  --dark-base: #2c2c2c;
+  --darkbottom-hover: #83ffe6;
+  --darkbottom-click: #ff5f5f;
+  --dark-text: #fcfcfc;
+  scroll-behavior: smooth;
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 0;
+}
+
+@font-face {
+  font-family: "sahel";
+  src: url("../Font/Sahel-FD.eot");
+  src: url("../Font/Sahel-FD.eot?#iefix") format("FontName-opentype"),
+    url("../Font/Sahel-FD.ttf") format("truetype"),
+    url("../Font/Sahel-FD.woff") format("woff");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* *************** start background *************** */
+
+body {
+  background-color: #2b2b2b;
+  position: relative;
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#hex-grid .grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url(../svg/grid.svg) repeat;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-size: 320px;
+}
+
+#hex-grid .light {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  filter: blur(25px);
+  background: radial-gradient(#d400d4 0%, #00ccff 100%);
+  z-index: -1;
+  border-radius: 50%;
+}
+
+body:hover #hex-grid .light {
+  animation: light 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes light {
+  0% {
+    width: 20px;
+    height: 20px;
+  }
+  100% {
+    width: 240px;
+    height: 240px;
+  }
+}
+
+/* *************** end background *************** */
+
+body > h1 {
+  z-index: 3;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+body > h2 {
+  z-index: 3;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.container {
+  margin: 35px 0;
+  padding: 15px 15px;
+  color: rgb(187, 187, 187);
+  width: 85%;
+  max-width: 800px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25x 45x rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* *************** start header bookmark *************** */
+
+.bookmark {
+  position: absolute;
+  top: -20px;
+  right: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.bookmark-up {
+  background: #252525;
+  width: 80px;
+  height: 170px;
+  border-radius: 0 30px 40px 40px;
+  border-top-left-radius: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: -10px 18px 15px rgba(0, 0, 0, 0.5);
+}
+
+.bookmark-up::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: -30px;
+  width: 30px;
+  height: 19px;
+  background: #181818;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.bookmark-up::after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: -15px;
+  width: 30px;
+  height: 19px;
+  background: #252525;
+  z-index: -1;
+}
+
+.bookmark-up > div {
+  position: relative;
+  border-radius: 30px;
+  border-top-left-radius: 0;
+  width: 60px;
+  height: 160px;
+  border: 2.5px solid rgb(218, 165, 32);
+  border-top: 0;
+  margin-top: -10px;
+  font-family: serif;
+  color: rgb(218, 165, 32);
+}
+
+.bookmark-up > div::before {
+  content: "";
+  position: absolute;
+  background: #252525;
+  width: 12.4px;
+  height: 40px;
+  top: 0;
+  left: -12.5px;
+  z-index: 1;
+}
+
+.bookmark-up > div::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -12.5px;
+  width: 9.7px;
+  height: 100px;
+  background: #252525;
+  border: 2.5px solid rgb(218, 165, 32);
+  border-top: 0;
+  border-bottom: 0;
+  border-left: 0;
+  border-top-right-radius: 30px;
+  z-index: 3;
+}
+
+.bookmark-up > div > .p {
+  position: absolute;
+  font-size: 45px;
+  top: 40px;
+  left: 10px;
+}
+
+.bookmark-up > div > .g {
+  position: absolute;
+  font-size: 45px;
+  top: 67px;
+  left: 17px;
+}
+
+/* *************** end header bookmark *************** */
+
+/* *************** start header flash *************** */
+
+header > .flash {
+  position: absolute;
+  background-color: #252525;
+  width: 500px;
+  height: 200px;
+  top: 40px;
+  left: -600px;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: -6px 12px 15px rgba(0, 0, 0, 0.5);
+  animation: flash 2s cubic-bezier(0.6, -0.6, 0.6, 1.6);
+  animation-fill-mode: forwards;
+  z-index: 5;
+}
+
+@keyframes flash {
+  0% {
+    left: -600px;
+  }
+  100% {
+    top: 40px;
+    left: -40px;
+  }
+}
+
+header > .flash > .info {
+  position: relative;
+  background-color: #252525;
+  width: 480px;
+  height: 180px;
+  border-radius: 100px;
+  border: 2.5px solid rgb(218, 165, 32);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header > .flash > .info > .image {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-color: #252525;
+  overflow: hidden;
+  left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0px 0px 15px rgb(0 0 0 / 50%);
+}
+
+header > .flash > .info > .image::before {
+  content: "";
+  position: absolute;
+  inset: -3px 50px;
+  background: linear-gradient(315deg, #00ccff, #d400d4);
+  transition: 0.3s;
+  animation: image-cover 4s linear infinite;
+}
+
+header > .flash:hover .image::before {
+  inset: -4px 0px;
+}
+
+@keyframes image-cover {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+header > .flash > .info > .image::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  background: #252525;
+  transition: 0.5s;
+  border-radius: 50%;
+  animation: image-cover 4s linear infinite;
+  box-shadow: inset 0px 0px 15px rgb(0 0 0 / 50%);
+}
+
+header > .flash > .info > .image > .text {
+  position: absolute;
+  animation: in-image 3s linear 0s infinite;
+  color: #49f0d4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  font-size: 100px;
+  text-shadow: -7px 20px 12px #000;
+}
+
+@keyframes in-image {
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+header > .flash > .info > .inform {
+  margin-right: 50px;
+}
+
+header > .flash > .info > .inform > ul {
+  position: relative;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+header > .flash > .info > .inform > ul > li {
+  position: relative;
+  padding: 4px;
+}
+
+.inform > ul > li:nth-child(1) {
+  position: absolute;
+  left: -20px;
+}
+.inform > ul > li:nth-child(2) {
+  position: absolute;
+  left: -20px;
+}
+.inform > ul > li:nth-child(3) {
+  position: absolute;
+  left: -28px;
+}
+.inform > ul > li:nth-child(4) {
+  position: absolute;
+  left: -42px;
+}
+.inform > ul > li:nth-child(5) {
+  position: absolute;
+  left: -50px;
+}
+
+.line {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(0px);
+  position: relative;
+  width: 90%;
+  height: 14px;
+  border-radius: 12px;
+  box-shadow: inset -4px 5px 8px rgb(0 0 0 / 50%);
+  margin-top: 270px;
+  margin-bottom: 30px;
+}
+
+.line2 {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(0px);
+  position: relative;
+  width: 90%;
+  height: 14px;
+  border-radius: 12px;
+  box-shadow: inset -4px 5px 8px rgb(0 0 0 / 50%);
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/* *************** end header flash *************** */
+
+/* *************** start main skill *************** */
+
+main {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+main > .skill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  animation: skill-load 2s ease-in-out forwards;
+  opacity: 0;
+}
+
+@keyframes skill-load {
+  0% {
+    opacity: 0;
+    /* margin-top: 300px; */
+  }
+  100% {
+    opacity: 1;
+    /* margin-top: 0; */
+  }
+}
+
+main > .skill > h2 {
+  padding-bottom: 20px;
+  text-shadow: -15px 15px 8px black;
+}
+
+main > .skill > ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+main > .skill > ul > .javascript {
+  margin: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #252525;
+  box-shadow: inset 4px -4px 4px -1px rgba(208, 208, 208, 0.2),
+    inset -4px 4px 4px -1px rgba(0, 0, 0, 0.5),
+    0px 12px 10px rgba(208, 208, 208, 0.05),
+    6px -6px 10px -3px rgba(0, 0, 0, 0.5);
+}
+
+main > .skill > ul > .javascript::before {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-color: #252525;
+  box-shadow: 6px -6px 6px -6px rgba(208, 208, 208, 0.3),
+    -6px 6px 6px -1px rgba(0, 0, 0, 0.5),
+    inset -6px 6px 6px -3px rgba(208, 208, 208, 0.3),
+    inset 6px -6px 6px -1px rgba(0, 0, 0, 0.5);
+  z-index: -3;
+}
+
+main > .skill > ul > .javascript::after {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-image: conic-gradient(
+    #252525 -5%,
+    #00ccff 20%,
+    #d400d4 80%,
+    #252525 83%
+  );
+  box-shadow: inset -6px 6px 6px -3px rgba(208, 208, 208, 0.3),
+    inset 6px -6px 6px -1px rgba(0, 0, 0, 0.5);
+  z-index: -2;
+  filter: blur(1px);
+}
+
+main > .skill > ul > .nodejs {
+  margin: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #252525;
+  box-shadow: inset 4px -4px 4px -1px rgba(208, 208, 208, 0.2),
+    inset -4px 4px 4px -1px rgba(0, 0, 0, 0.5),
+    0px 12px 10px rgba(208, 208, 208, 0.05),
+    6px -6px 10px -3px rgba(0, 0, 0, 0.5);
+}
+
+main > .skill > ul > .nodejs::before {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-color: #252525;
+  box-shadow: 6px -6px 6px -6px rgba(208, 208, 208, 0.3),
+    -6px 6px 6px -1px rgba(0, 0, 0, 0.5),
+    inset -6px 6px 6px -3px rgba(208, 208, 208, 0.3),
+    inset 6px -6px 6px -1px rgba(0, 0, 0, 0.5);
+  z-index: -3;
+}
+
+main > .skill > ul > .nodejs::after {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-image: conic-gradient(
+    #252525 -5%,
+    #00ccff 20%,
+    #d400d4 85%,
+    #252525 88%
+  );
+  box-shadow: inset -6px 6px 6px -3px rgba(208, 208, 208, 0.3),
+    inset 6px -6px 6px -1px rgba(0, 0, 0, 0.5);
+  z-index: -2;
+  filter: blur(1px);
+}
+
+main > .skill > ul > .ejs {
+  margin: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #252525;
+  box-shadow: inset 4px -4px 4px -1px rgba(208, 208, 208, 0.2),
+    inset -4px 4px 4px -1px rgba(0, 0, 0, 0.5),
+    0px 12px 10px rgba(208, 208, 208, 0.05),
+    6px -6px 10px -3px rgba(0, 0, 0, 0.5);
+}
+
+main > .skill > ul > .ejs::before {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-color: #252525;
+  box-shadow: 6px -6px 6px -6px rgba(208, 208, 208, 0.3),
+    -6px 6px 6px -1px rgba(0, 0, 0, 0.5),
+    inset -6px 6px 6px -3px rgba(208, 208, 208, 0.3),
+    inset 6px -6px 6px -1px rgba(0, 0, 0, 0.5);
+  z-index: -3;
+}
+
+main > .skill > ul > .ejs::after {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-image: conic-gradient(
+    #252525 -5%,
+    #00ccff 20%,
+    #d400d4 95%,
+    #252525 98%
+  );
+  box-shadow: inset -6px 6px 6px -3px rgba(208, 208, 208, 0.3),
+    inset 6px -6px 6px -1px rgba(0, 0, 0, 0.5);
+  z-index: -2;
+  filter: blur(1px);
+}
+
+main > .skill > ul > .html {
+  margin: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #252525;
+  box-shadow: inset 4px -4px 4px -1px rgba(208, 208, 208, 0.2),
+    inset -4px 4px 4px -1px rgba(0, 0, 0, 0.5),
+    0px 12px 10px rgba(208, 208, 208, 0.05),
+    6px -6px 10px -3px rgba(0, 0, 0, 0.5);
+}
+
+main > .skill > ul > .html::before {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-color: #252525;
+  box-shadow: 6px -6px 6px -6px rgba(208, 208, 208, 0.3),
+    -6px 6px 6px -1px rgba(0, 0, 0, 0.5),
+    inset -6px 6px 6px -3px rgba(208, 208, 208, 0.3),
+    inset 6px -6px 6px -1px rgba(0, 0, 0, 0.5);
+  z-index: -3;
+}
+
+main > .skill > ul > .html::after {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-image: conic-gradient(
+    #252525 -5%,
+    #00ccff 20%,
+    #d400d4 95%,
+    #252525 98%
+  );
+  box-shadow: inset -6px 6px 6px -3px rgba(208, 208, 208, 0.3),
+    inset 6px -6px 6px -1px rgba(0, 0, 0, 0.5);
+  z-index: -2;
+  filter: blur(1px);
+}
+
+main > .skill > ul > .css {
+  margin: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #252525;
+  box-shadow: inset 4px -4px 4px -1px rgba(208, 208, 208, 0.2),
+    inset -4px 4px 4px -1px rgba(0, 0, 0, 0.5),
+    0px 12px 10px rgba(208, 208, 208, 0.05),
+    6px -6px 10px -3px rgba(0, 0, 0, 0.5);
+}
+
+main > .skill > ul > .css::before {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-color: #252525;
+  box-shadow: 6px -6px 6px -6px rgba(208, 208, 208, 0.3),
+    -6px 6px 6px -1px rgba(0, 0, 0, 0.5),
+    inset -6px 6px 6px -3px rgba(208, 208, 208, 0.3),
+    inset 6px -6px 6px -1px rgba(0, 0, 0, 0.5);
+  z-index: -3;
+}
+
+main > .skill > ul > .css::after {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-image: conic-gradient(
+    #252525 -5%,
+    #00ccff 20%,
+    #d400d4 95%,
+    #252525 98%
+  );
+  box-shadow: inset -6px 6px 6px -3px rgba(208, 208, 208, 0.3),
+    inset 6px -6px 6px -1px rgba(0, 0, 0, 0.5);
+  z-index: -2;
+  filter: blur(1px);
+}
+
+main > .skill > ul > .express {
+  margin: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #252525;
+  box-shadow: inset 4px -4px 4px -1px rgba(208, 208, 208, 0.2),
+    inset -4px 4px 4px -1px rgba(0, 0, 0, 0.5),
+    0px 12px 10px rgba(208, 208, 208, 0.05),
+    6px -6px 10px -3px rgba(0, 0, 0, 0.5);
+}
+
+main > .skill > ul > .express::before {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-color: #252525;
+  box-shadow: 6px -6px 6px -6px rgba(208, 208, 208, 0.3),
+    -6px 6px 6px -1px rgba(0, 0, 0, 0.5),
+    inset -6px 6px 6px -3px rgba(208, 208, 208, 0.3),
+    inset 6px -6px 6px -1px rgba(0, 0, 0, 0.5);
+  z-index: -3;
+}
+
+main > .skill > ul > .express::after {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-image: conic-gradient(
+    #252525 -5%,
+    #00ccff 20%,
+    #d400d4 80%,
+    #252525 83%
+  );
+  box-shadow: inset -6px 6px 6px -3px rgba(208, 208, 208, 0.3),
+    inset 6px -6px 6px -1px rgba(0, 0, 0, 0.5);
+  z-index: -2;
+  filter: blur(1px);
+}
+
+main > .skill > ul > .mongoose {
+  margin: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #252525;
+  box-shadow: inset 4px -4px 4px -1px rgba(208, 208, 208, 0.2),
+    inset -4px 4px 4px -1px rgba(0, 0, 0, 0.5),
+    0px 12px 10px rgba(208, 208, 208, 0.05),
+    6px -6px 10px -3px rgba(0, 0, 0, 0.5);
+}
+
+main > .skill > ul > .mongoose::before {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-color: #252525;
+  box-shadow: 6px -6px 6px -6px rgba(208, 208, 208, 0.3),
+    -6px 6px 6px -1px rgba(0, 0, 0, 0.5),
+    inset -6px 6px 6px -3px rgba(208, 208, 208, 0.3),
+    inset 6px -6px 6px -1px rgba(0, 0, 0, 0.5);
+  z-index: -3;
+}
+
+main > .skill > ul > .mongoose::after {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-image: conic-gradient(
+    #252525 -5%,
+    #00ccff 20%,
+    #d400d4 70%,
+    #252525 73%
+  );
+  box-shadow: inset -6px 6px 6px -3px rgba(208, 208, 208, 0.3),
+    inset 6px -6px 6px -1px rgba(0, 0, 0, 0.5);
+  z-index: -2;
+  filter: blur(1px);
+}
+
+main > .skill > ul > .telegraf {
+  margin: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #252525;
+  box-shadow: inset 4px -4px 4px -1px rgba(208, 208, 208, 0.2),
+    inset -4px 4px 4px -1px rgba(0, 0, 0, 0.5),
+    0px 12px 10px rgba(208, 208, 208, 0.05),
+    6px -6px 10px -3px rgba(0, 0, 0, 0.5);
+}
+
+main > .skill > ul > .telegraf::before {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-color: #252525;
+  box-shadow: 6px -6px 6px -6px rgba(208, 208, 208, 0.3),
+    -6px 6px 6px -1px rgba(0, 0, 0, 0.5),
+    inset -6px 6px 6px -3px rgba(208, 208, 208, 0.3),
+    inset 6px -6px 6px -1px rgba(0, 0, 0, 0.5);
+  z-index: -3;
+}
+
+main > .skill > ul > .telegraf::after {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-image: conic-gradient(
+    #252525 -5%,
+    #00ccff 20%,
+    #d400d4 70%,
+    #252525 73%
+  );
+  box-shadow: inset -6px 6px 6px -3px rgba(208, 208, 208, 0.3),
+    inset 6px -6px 6px -1px rgba(0, 0, 0, 0.5);
+  z-index: -2;
+  filter: blur(1px);
+}
+
+main > .skill > ul > .gramjs {
+  margin: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #252525;
+  box-shadow: inset 4px -4px 4px -1px rgba(208, 208, 208, 0.2),
+    inset -4px 4px 4px -1px rgba(0, 0, 0, 0.5),
+    0px 12px 10px rgba(208, 208, 208, 0.05),
+    6px -6px 10px -3px rgba(0, 0, 0, 0.5);
+}
+
+main > .skill > ul > .gramjs::before {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-color: #252525;
+  box-shadow: 6px -6px 6px -6px rgba(208, 208, 208, 0.3),
+    -6px 6px 6px -1px rgba(0, 0, 0, 0.5),
+    inset -6px 6px 6px -3px rgba(208, 208, 208, 0.3),
+    inset 6px -6px 6px -1px rgba(0, 0, 0, 0.5);
+  z-index: -3;
+}
+
+main > .skill > ul > .gramjs::after {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-image: conic-gradient(
+    #252525 -5%,
+    #00ccff 20%,
+    #d400d4 60%,
+    #252525 63%
+  );
+  box-shadow: inset -6px 6px 6px -3px rgba(208, 208, 208, 0.3),
+    inset 6px -6px 6px -1px rgba(0, 0, 0, 0.5);
+  z-index: -2;
+  filter: blur(1px);
+}
+
+main > .skill > ul > .nc {
+  margin: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #252525;
+  box-shadow: inset 4px -4px 4px -1px rgba(208, 208, 208, 0.2),
+    inset -4px 4px 4px -1px rgba(0, 0, 0, 0.5),
+    0px 12px 10px rgba(208, 208, 208, 0.05),
+    6px -6px 10px -3px rgba(0, 0, 0, 0.5);
+}
+
+main > .skill > ul > .nc::before {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-color: #252525;
+  box-shadow: 6px -6px 6px -6px rgba(208, 208, 208, 0.3),
+    -6px 6px 6px -1px rgba(0, 0, 0, 0.5),
+    inset -6px 6px 6px -3px rgba(208, 208, 208, 0.3),
+    inset 6px -6px 6px -1px rgba(0, 0, 0, 0.5);
+  z-index: -3;
+}
+
+main > .skill > ul > .nc::after {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-image: conic-gradient(
+    #252525 4%,
+    #00ccff 25%,
+    #d400d4 50%,
+    #252525 70%
+  );
+  /* box-shadow: inset -6px 6px 6px -3px rgba(208, 208, 208, 0.3),
+    inset 6px -6px 6px -1px rgba(0, 0, 0, 0.5); */
+  box-shadow: inset 0px 0px 6px 1px rgba(208, 208, 208, 0.2),
+    inset -1px -1px 6px 1px rgba(0, 0, 0, 0.5),
+    0px 0px 6px 1px rgba(0, 0, 0, 0.5);
+  z-index: -2;
+  animation: not-c 5s linear infinite;
+  filter: blur(1px);
+}
+
+@keyframes not-c {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+main > .skill > ul > .regex {
+  margin: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #252525;
+  box-shadow: inset 4px -4px 4px -1px rgba(208, 208, 208, 0.2),
+    inset -4px 4px 4px -1px rgba(0, 0, 0, 0.5),
+    0px 12px 10px rgba(208, 208, 208, 0.05),
+    6px -6px 10px -3px rgba(0, 0, 0, 0.5);
+}
+
+main > .skill > ul > .regex::before {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-color: #252525;
+  box-shadow: 6px -6px 6px -6px rgba(208, 208, 208, 0.3),
+    -6px 6px 6px -1px rgba(0, 0, 0, 0.5),
+    inset -6px 6px 6px -3px rgba(208, 208, 208, 0.3),
+    inset 6px -6px 6px -1px rgba(0, 0, 0, 0.5);
+  z-index: -3;
+}
+
+main > .skill > ul > .regex::after {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-image: conic-gradient(
+    #252525 -5%,
+    #00ccff 20%,
+    #d400d4 80%,
+    #252525 83%
+  );
+  box-shadow: inset -6px 6px 6px -3px rgba(208, 208, 208, 0.3),
+    inset 6px -6px 6px -1px rgba(0, 0, 0, 0.5);
+  z-index: -2;
+  filter: blur(1px);
+}
+
+main > .skill > ul > .python {
+  margin: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #252525;
+  box-shadow: inset 4px -4px 4px -1px rgba(208, 208, 208, 0.2),
+    inset -4px 4px 4px -1px rgba(0, 0, 0, 0.5),
+    0px 12px 10px rgba(208, 208, 208, 0.05),
+    6px -6px 10px -3px rgba(0, 0, 0, 0.5);
+}
+
+main > .skill > ul > .python::before {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-color: #252525;
+  box-shadow: 6px -6px 6px -6px rgba(208, 208, 208, 0.3),
+    -6px 6px 6px -1px rgba(0, 0, 0, 0.5),
+    inset -6px 6px 6px -3px rgba(208, 208, 208, 0.3),
+    inset 6px -6px 6px -1px rgba(0, 0, 0, 0.5);
+  z-index: -3;
+}
+
+main > .skill > ul > .python::after {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-image: conic-gradient(
+    #252525 -5%,
+    #00ccff 20%,
+    #d400d4 35%,
+    #252525 38%
+  );
+  box-shadow: inset -6px 6px 6px -3px rgba(208, 208, 208, 0.3),
+    inset 6px -6px 6px -1px rgba(0, 0, 0, 0.5);
+  z-index: -2;
+  filter: blur(1px);
+}
+
+main > .skill > ul > .django {
+  margin: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #252525;
+  box-shadow: inset 4px -4px 4px -1px rgba(208, 208, 208, 0.2),
+    inset -4px 4px 4px -1px rgba(0, 0, 0, 0.5),
+    0px 12px 10px rgba(208, 208, 208, 0.05),
+    6px -6px 10px -3px rgba(0, 0, 0, 0.5);
+}
+
+main > .skill > ul > .django::before {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-color: #252525;
+  box-shadow: 6px -6px 6px -6px rgba(208, 208, 208, 0.3),
+    -6px 6px 6px -1px rgba(0, 0, 0, 0.5),
+    inset -6px 6px 6px -3px rgba(208, 208, 208, 0.3),
+    inset 6px -6px 6px -1px rgba(0, 0, 0, 0.5);
+  z-index: -3;
+}
+
+main > .skill > ul > .django::after {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-image: conic-gradient(
+    #252525 -5%,
+    #00ccff 10%,
+    /* #d400d4 10%, */ #252525 13%
+  );
+  box-shadow: inset -6px 6px 6px -3px rgba(208, 208, 208, 0.3),
+    inset 6px -6px 6px -1px rgba(0, 0, 0, 0.5);
+  z-index: -2;
+  filter: blur(1px);
+}
+
+main > .skill > ul > .flask {
+  margin: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #252525;
+  box-shadow: inset 4px -4px 4px -1px rgba(208, 208, 208, 0.2),
+    inset -4px 4px 4px -1px rgba(0, 0, 0, 0.5),
+    0px 12px 10px rgba(208, 208, 208, 0.05),
+    6px -6px 10px -3px rgba(0, 0, 0, 0.5);
+}
+
+main > .skill > ul > .flask::before {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-color: #252525;
+  box-shadow: 6px -6px 6px -6px rgba(208, 208, 208, 0.3),
+    -6px 6px 6px -1px rgba(0, 0, 0, 0.5),
+    inset -6px 6px 6px -3px rgba(208, 208, 208, 0.3),
+    inset 6px -6px 6px -1px rgba(0, 0, 0, 0.5);
+  z-index: -3;
+}
+
+main > .skill > ul > .flask::after {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-image: conic-gradient(
+    #252525 -5%,
+    #00ccff 10%,
+    /* #d400d4 10%, */ #252525 13%
+  );
+  box-shadow: inset -6px 6px 6px -3px rgba(208, 208, 208, 0.3),
+    inset 6px -6px 6px -1px rgba(0, 0, 0, 0.5);
+  z-index: -2;
+  filter: blur(1px);
+}
+
+main > .skill > ul > .fastapi {
+  margin: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #252525;
+  box-shadow: inset 4px -4px 4px -1px rgba(208, 208, 208, 0.2),
+    inset -4px 4px 4px -1px rgba(0, 0, 0, 0.5),
+    0px 12px 10px rgba(208, 208, 208, 0.05),
+    6px -6px 10px -3px rgba(0, 0, 0, 0.5);
+}
+
+main > .skill > ul > .fastapi::before {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-color: #252525;
+  box-shadow: 6px -6px 6px -6px rgba(208, 208, 208, 0.3),
+    -6px 6px 6px -1px rgba(0, 0, 0, 0.5),
+    inset -6px 6px 6px -3px rgba(208, 208, 208, 0.3),
+    inset 6px -6px 6px -1px rgba(0, 0, 0, 0.5);
+  z-index: -3;
+}
+
+main > .skill > ul > .fastapi::after {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-image: conic-gradient(
+    #252525 -5%,
+    #00ccff 10%,
+    /* #d400d4 10%, */ #252525 13%
+  );
+  box-shadow: inset -6px 6px 6px -3px rgba(208, 208, 208, 0.3),
+    inset 6px -6px 6px -1px rgba(0, 0, 0, 0.5);
+  z-index: -2;
+  filter: blur(1px);
+}
+
+main > .skill > ul > li {
+  margin: 0;
+}
+
+/* *************** end main skill *************** */
+
+main > .skill2 {
+  margin-top: 10px;
+  position: relative;
+  width: 90%;
+  background: #252525;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border: 2.5px solid rgb(218, 165, 32);
+  border-radius: 13px;
+  box-shadow: inset 6px -6px 6px -3px rgba(140, 140, 140, 0.2),
+    inset -6px 6px 6px -1px rgba(0, 0, 0, 0.5);
+}
+
+main > .skill2::after {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  background: #252525;
+  z-index: -1;
+  border-radius: 15px;
+  box-shadow: 6px -6px 6px -3px rgba(129, 128, 128, 0.2),
+    -6px 6px 6px -1px rgba(0, 0, 0, 0.5);
+}
+
+main > .skill2 > h2 {
+  padding-top: 20px;
+  position: relative;
+  text-shadow: -15px 15px 8px black;
+}
+
+main > .skill2 > ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  overflow: hidden;
+  padding: 20px;
+}
+
+main > .skill2 > ul > li {
+  position: relative;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 120px;
+  height: 150px;
+  background: #00ccff;
+}
+
+main > .skill2 > ul > li::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  transform: skew(3deg, 3deg);
+  background: linear-gradient(315deg, #00ccff, #252525, #d400d4);
+}
+
+main > .skill2 > ul > li::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  transform: skew(3deg, 3deg);
+  background: linear-gradient(315deg, #00ccff, #252525, #d400d4);
+  box-shadow: -6px 6px 20px -1px black;
+  filter: blur(0px);
+  animation: hardskill 6s linear infinite;
+}
+
+@keyframes hardskill {
+  0% {
+    filter: blur(0px);
+  }
+  50% {
+    filter: blur(20px);
+  }
+  100% {
+    filter: blur(0px);
+  }
+}
+
+main > .skill2 > ul > li > span {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 3;
+  overflow: hidden;
+  text-shadow: -10px 10px 10px black;
+}
+
+main > .skill2 > ul > li > span::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #252525;
+  z-index: -1;
+  box-shadow: inset 1px 1px 5px #d400d4, inset -1px -1px 5px #00ccff;
+  filter: blur(0.7px);
+}
+
+/* *************** end main skill *************** */
+
+/* *************** start footer *************** */
+
+footer {
+  margin-top: 10px;
+  padding: 20px;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap-reverse;
+}
+
+footer > span {
+  margin-top: 15px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+footer > span span {
+  padding: 5px;
+}
+
+footer > span span:nth-child(2) {
+  font-size: 14px;
+}
+
+footer > span a {
+  text-decoration: none;
+  color: #000000;
+  transition: all 1s linear;
+}
+
+footer > span a:hover {
+  color: rgb(218, 165, 32);
+}
+
+footer > span .heart:hover {
+  animation: heart 1s infinite ease-in-out;
+  color: red;
+}
+
+@keyframes heart {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+footer > .cube {
+  margin: 20px;
+  position: relative;
+  width: 61px;
+  height: 61px;
+  transform-style: preserve-3d;
+  transform: rotateX(-30deg);
+  animation: cube 6s linear infinite;
+}
+
+@keyframes cube {
+  0% {
+    transform: rotateX(-30deg) rotateY(0deg);
+  }
+  100% {
+    transform: rotateX(-30deg) rotateY(360deg);
+  }
+}
+
+footer > .cube > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+footer > .cube > div > span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #252525;
+  transform: rotateY(calc(90deg * var(--i))) translateZ(30px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer > .cube > .top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 61px;
+  height: 61px;
+  background: #252525;
+  transform: rotateX(90deg) translateZ(30px);
+}
+
+footer > .cube > .top::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(18, 18, 18, 0.7);
+  transform: translateZ(-80px);
+  filter: blur(5px);
+}
+
+footer > .cube .ico {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+footer > .cube a {
+  text-decoration: none;
+  color: azure;
+  font-size: 35px;
+}
+
+footer > .cube .tel:hover {
+  color: #3390ec;
+  transform: scale(1.5);
+}
+
+footer > .cube .insta:hover {
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  border-radius: 15px;
+  transform: scale(1.5);
+}
+
+footer > .cube .twit:hover {
+  color: #1a8cd8;
+  transform: scale(1.5);
+}
+
+footer > .cube .link:hover {
+  color: #0a66c2;
+  transform: scale(1.5);
+}
+
+footer > .cube .gith:hover {
+  transform: scale(1.5);
+}
+
+/* *************** end footer *************** */
+
+/* *************** start scrollbar *************** */
+
+::-webkit-scrollbar {
+  background: #181818;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 6px -6px 6px -5px rgba(208, 208, 208, 0.3),
+    inset -6px 6px 6px -1px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-thumb {
+  box-shadow: inset -6px 6px 6px -5px rgba(208, 208, 208, 0.3),
+    inset 6px -6px 6px -1px rgba(0, 0, 0, 0.5);
+  background: #292929;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1d1d1d;
+}
+
+/* *************** end scrollbar *************** */
+
+/* *************** start responsive *************** */
+
+@media (max-width: 750px) {
+  header > .bookmark {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+
+  .container {
+    width: 90%;
+  }
+
+  header {
+    position: relative;
+    top: -20px;
+    width: 110%;
+    background: #252525;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 13px 13px 0 0;
+    box-shadow: 0px 7px 10px rgb(12, 12, 12);
+    animation: header 1s linear forwards;
+  }
+
+  header > .flash {
+    position: relative;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    padding: 25px;
+    top: 0px;
+    left: 0px;
+    height: 90%;
+    width: 100%;
+    border-radius: 0;
+    box-shadow: 0 0 0 0;
+    background: #252525;
+    border: 2.5px solid rgb(218, 165, 32);
+    border-left: 0;
+    border-right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  header > .flash > .info {
+    border: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  header > .flash > .info > .image {
+    left: 0;
+  }
+
+  header > .flash > .info > .inform {
+    margin: 0;
+  }
+
+  header > .flash > .info > .inform > ul > li {
+    left: 0;
+  }
+
+  @keyframes flash {
+  }
+
+  @keyframes header {
+    0% {
+      top: -400px;
+    }
+    100% {
+      top: -20px;
+    }
+  }
+
+  .line {
+    margin-top: 30px;
+  }
+
+  footer > span span {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 96%;
+  }
+
+  header {
+    position: relative;
+    width: 110%;
+    background: #252525;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 13px 13px 0 0;
+    box-shadow: 0px 7px 10px rgb(12, 12, 12);
+    animation: header 1s linear forwards;
+  }
+
+  main > .skill > ul > li:ch {
+    margin: 50px;
+  }
+
+  main > .skill2 {
+    width: 95%;
+  }
+
+  main > .skill2 > ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+    padding: 10px;
+  }
+
+  main > .skill2 > ul > li {
+    margin: 20px;
+    width: 110px;
+    height: 140px;
+  }
+}
